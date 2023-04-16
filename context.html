@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Context</title>
+  </head>
+  <body>
+    <h1>show favourites colors with context and useContext👎</h1>
+    <div id="root">Favorite Colors</div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const { useState, createContext, useContext } = React;
+      const ColorContext = createContext();
+      const FavoriteColor = () => {
+        const [color, setColor] = useState('red');
+        return (
+          <ColorContext.Provider value={setColor}>
+            <h1>{`My Favourite color is ${color}!👍`}</h1>
+            <GreenColor />
+            <BlueColor />
+            <CyanColor />
+            <YellowColor />
+            <BlackColor />
+            <WhiteColor />
+          </ColorContext.Provider>
+        );
+      };
+      const GreenColor = () => {
+        const setColor = useContext(ColorContext);
+        return (
+          <>
+            <button type="button" onClick={() => setColor('green')}>
+              Green
+            </button>
+          </>
+        );
+      };
+      const BlueColor = () => {
+        const setColor = useContext(ColorContext);
+        return (
+          <>
+            <button type="button" onClick={() => setColor('blue')}>
+              Blue
+            </button>
+          </>
+        );
+      };
+      const CyanColor = () => {
+        const setColor = useContext(ColorContext);
+        return (
+          <>
+            <button type="button" onClick={() => setColor('cyan')}>
+              Cyan
+            </button>
+          </>
+        );
+      };
+
+      const YellowColor = () => {
+        const setColor = useContext(ColorContext);
+        return (
+          <>
+            <button type="button" onClick={() => setColor('yellow')}>
+              Yellow
+            </button>
+          </>
+        );
+      };
+
+      const BlackColor = () => {
+        const setColor = useContext(ColorContext);
+        return (
+          <>
+            <button type="button" onClick={() => setColor('black')}>
+              Black
+            </button>
+          </>
+        );
+      };
+
+      const WhiteColor = () => {
+        const setColor = useContext(ColorContext);
+        return (
+          <>
+            <button type="button" onClick={() => setColor('white')}>
+              White
+            </button>
+          </>
+        );
+      };
+      ReactDOM.render(<FavoriteColor />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
